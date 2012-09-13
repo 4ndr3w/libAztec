@@ -14,6 +14,12 @@ public class Aztec extends Thread
 		start();
 	}
 	
+	public Aztec(int port, RequestHandler handler) throws IOException
+	{
+		this(port);
+		reqHandler = handler;
+	}
+	
 	public void setRequestHandler(RequestHandler handler)
 	{
 		reqHandler = handler;
@@ -30,7 +36,6 @@ public class Aztec extends Thread
 		{
 			try {
 				final Socket thisSock = listener.accept();
-				System.out.println("accept()");
 				new Thread()
 				{
 					public void run()
