@@ -23,7 +23,6 @@ public class EasyRequestHandler implements RequestHandler {
 			if ( req.getPath().matches(thisURL) )
 				return pageList.get(thisURL).handleHTTPRequest(req);
 		}
-		return new HTTPResponse(500, "No handlers matched your request.");
+		return ErrorFactory.internalServerError("No plugins where available to handle your request.");
 	}
-
 }
